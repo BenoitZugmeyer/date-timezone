@@ -1,0 +1,23 @@
+{
+  "name": "date-timezone",
+  "version": "1.0.0",
+  "description": "Timezone aware Date objects.",
+  "repository": "https://github.com/BenoitZugmeyer/date-timezone",
+  "main": "index.js",
+  "scripts": {
+    "dist": "bash dist.bash",
+    "lint": "eslint .",
+    "test": "jasmine"
+  },
+  "author": "Benoît Zugmeyer <benoit@zugmeyer.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^13.0.0",
+    "eslint": "^1.10.3",
+    "jasmine": "^2.4.1",
+    "uglifyify": "^3.0.1"
+  },
+  "dependencies": {
+    "moment-timezone": "^0.5.0"
+  }
+}
