@@ -10,7 +10,7 @@ build () {
     local output=$1
     shift
     echo "Building dist/$output..."
-    browserify -s dateTimezone -t uglifyify -e index.js "${@}" -o dist/$output
+    browserify -s dateTimezone -g uglifyify -e index.js "${@}" -o dist/$output
 }
 
 build date-timezone.js -x moment-timezone
