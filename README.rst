@@ -24,10 +24,10 @@ Browser
     npm install
     npm run dist
 
-Then include either `dist/date-timezone.js` or `dist/date-timezone-with-moment.js` in your
+Then include either ``dist/date-timezone.js`` or ``dist/date-timezone-with-moment.js`` in your
 project. If you include the first one, make sure you also include moment-timezone_.
 
-You can always use `webpack` or `browserify` to include this in your project.
+You can always use ``webpack`` or ``browserify`` to include this in your project.
 
 API
 ===
@@ -37,18 +37,19 @@ API
     returned object have the same API as `native Date objects`_.
 
 :code:`dateTimezone.setGlobalTimezone(timezoneName)`
-    Set the global timezone to use when building dates with `DateTimezone`. By
+    Set the global timezone to use when building dates with :code:`DateTimezone`. By
     default, the global timezone is the current runtime timezone. It supports any
     timezone name supported by moment-timezone.
 
     Call without argument to reset the global timezone to the runtime timezone.
 
 :code:`dateTimezone.patch()`
-    Replace the native `Date` constructor with the `DateTimezone` constructor. All new
-    dates will respect the global timezone.
+    Replace the native :code:`Date` constructor with the :code:`DateTimezone` constructor.
+    All new dates will respect the global timezone.
 
 :code:`dateTimezone.getNativeDate()`
-    Return the native `Date` constructor, useful when `patch()` has been called.
+    Return the native :code:`Date` constructor, useful when :code:`patch()` has been
+    called.
 
 Usage example
 =============
