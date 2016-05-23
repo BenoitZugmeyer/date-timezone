@@ -182,19 +182,13 @@ function setFormatMethod(name, format, utc) {
 
 function mapDateMethod(name, utc) {
     method(name, function () {
-        var formatingDate;
+        var formatingDate = new NativeDate(this._m.valueOf());
 
-        var Date = global.Date;
-        global.Date = NativeDate;
-        var thisDate = this._m.toDate();
-        global.Date = Date;
-
-        if (utc) {
-            formatingDate = thisDate;
-        }
-        else {
-            formatingDate = new NativeDate(
-                this._m.valueOf() + (this._m.utcOffset() + thisDate.getTimezoneOffset()) * 1000 * 60
+        if (!utc) {
+            formatingDate.setMinutes(
+                formatingDate.getMinutes() +
+                formatingDate.getTimezoneOffset() +
+                this._m.utcOffset()
             );
         }
 
