@@ -5,10 +5,10 @@ var DateTimezone = dateTimezone.DateTimezone;
 
 var FOREIGN_TZ = "America/Noronha"; // one of the least populated timezone
 var TIMESTAMP = 1000000000000; // why not.
-var OFFSET_S = moment(TIMESTAMP).tz(FOREIGN_TZ).utcOffset() - moment(TIMESTAMP).utcOffset();
-var OFFSET_MS = OFFSET_S * 60 * 1000;
+var OFFSET_MIN = moment(TIMESTAMP).tz(FOREIGN_TZ).utcOffset() - moment(TIMESTAMP).utcOffset();
+var OFFSET_MS = OFFSET_MIN * 60 * 1000;
 
-if (!OFFSET_S) {
+if (!OFFSET_MIN) {
     console.log("WARNING: date-timezone spec is expected to be launched with a timezone " +
                 "different than UTC-2 (TZ environment variable)");
 }
@@ -190,7 +190,7 @@ describe("Date", function () {
             expect(datetz.getMinutes()).toBe(date.getMinutes());
             expect(datetz.getSeconds()).toBe(date.getSeconds());
             expect(datetz.getMilliseconds()).toBe(date.getMilliseconds());
-            expect(datetz.getTimezoneOffset()).toBe(date.getTimezoneOffset() - OFFSET_S);
+            expect(datetz.getTimezoneOffset()).toBe(date.getTimezoneOffset() - OFFSET_MIN);
         });
     });
 
