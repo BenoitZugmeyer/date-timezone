@@ -223,6 +223,11 @@ function patch() {
     return module.exports;
 }
 
+function unpatch() {
+    global.Date = NativeDate;
+    return module.exports;
+}
+
 function setGlobalTimezone(tz) {
     globalTimezone = tz || localTimezone;
 }
@@ -233,6 +238,7 @@ function getNativeDate() {
 
 module.exports = {
     patch: patch,
+    unpatch: unpatch,
     setGlobalTimezone: setGlobalTimezone,
     getNativeDate: getNativeDate,
     DateTimezone: DateTimezone,

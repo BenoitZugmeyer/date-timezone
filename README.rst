@@ -47,6 +47,10 @@ API
     Replace the native :code:`Date` constructor with the :code:`DateTimezone` constructor.
     All new dates will respect the global timezone.
 
+:code:`dateTimezone.unpatch()`
+    Restore the native :code:`Date` constructor if it has previously been replaced with
+    :code:`dateTimezone.patch()`.
+
 :code:`dateTimezone.getNativeDate()`
     Return the native :code:`Date` constructor, useful when :code:`patch()` has been
     called.
