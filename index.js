@@ -32,7 +32,7 @@ function createMoment() {
 }
 
 function parseLocalMoment(string) {
-    var date = new Date(string);
+    var date = new NativeDate(string);
     return createMoment({
         years: date.getFullYear(),
         months: date.getMonth(),
@@ -70,7 +70,7 @@ function DateTimezone(a, b, c, d, e, f, g) {
                 m = parseLocalMoment(a);
             }
             else {
-                m = createMoment(new Date(a));
+                m = createMoment(new NativeDate(a));
             }
         }
         else {
@@ -184,12 +184,16 @@ function mapDateMethod(name, utc) {
     method(name, function () {
         var formatingDate;
 
+        var Date = global.Date;
+        global.Date = NativeDate;
+        var thisDate = this._m.toDate();
+        global.Date = Date;
+
         if (utc) {
-            formatingDate = this._m.toDate();
+            formatingDate = thisDate;
         }
         else {
-            var thisDate = this._m.toDate();
-            formatingDate = new Date(
+            formatingDate = new NativeDate(
                 this._m.valueOf() + (this._m.utcOffset() + thisDate.getTimezoneOffset()) * 1000 * 60
             );
         }

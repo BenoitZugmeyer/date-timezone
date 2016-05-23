@@ -276,3 +276,29 @@ describe("Date", function () {
 
 });
 
+describe("patch", function () {
+    var nativeDate = Date;
+
+    beforeEach(function () {
+        dateTimezone.patch();
+    });
+
+    afterEach(function () {
+        dateTimezone.unpatch();
+    });
+
+    it("patches the global Date constructor", function () {
+        expect(Date).not.toBe(dateTimezone.getNativeDate());
+        expect(Date).not.toBe(nativeDate);
+    });
+
+    it("creates patched dates", function () {
+        expect(new Date(2001, 8, 9).getDate()).toBe(9);
+        expect(new Date("2001-09-09").getDate()).toBe(9);
+        expect(new Date("September 9, 2001").getDate()).toBe(9);
+        expect(new Date("September 9, 2001").toDateString()).toBe("Sun Sep 09 2001");
+        expect(new Date("September 9, 2001").toUTCString()).toBe("Sat, 08 Sep 2001 22:00:00 GMT");
+    });
+
+});
+
